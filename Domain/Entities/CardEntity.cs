@@ -1,6 +1,8 @@
-﻿namespace Infraestructure.Core.Entities;
+﻿using Domain.Common;
 
-public class CardEntity
+namespace Infraestructure.Core.Entities;
+
+public class CardEntity: BaseAuditableEntity
 {
     public string CardNumber { get; set; }
     
