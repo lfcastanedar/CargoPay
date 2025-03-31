@@ -1,4 +1,4 @@
-﻿namespace Common.Exceptions;
+﻿namespace Domain.Exceptions;
 
 public class HttpResponseException : Exception
 {

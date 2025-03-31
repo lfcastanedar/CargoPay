@@ -1,4 +1,4 @@
-﻿namespace Infraestructure.Core.DTO;
+﻿namespace Domain.DTO;
 
 public class ResponseDto
 {

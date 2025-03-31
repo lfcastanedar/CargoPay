@@ -1,6 +1,6 @@
-﻿namespace Domain.Services.Interfaces.Interfaces;
+﻿namespace Application.Services.Interfaces;
 
 public interface IUFEService
 {
-    
+    public Task<decimal> GetUFE();
 }

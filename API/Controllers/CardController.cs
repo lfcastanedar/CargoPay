@@ -1,20 +1,20 @@
 using API.Handlers;
-using Domain.Services.Interfaces.Interfaces;
+using Application.Services.Interfaces;
+using Domain.DTO;
+using Domain.DTO.Card;
+using Domain.Helpers;
 using Infraestructure.Core.Constans;
-using Infraestructure.Core.DTO.Card;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Infraestructure.Core.DTO;
-using Infraestructure.Core.Helpers;
 using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [TypeFilter(typeof(CustomExceptionHandler))]
     [Authorize]
-    public class CardController : ControllerBase
+    [TypeFilter(typeof(CustomExceptionHandler))]
+    [TypeFilter(typeof(ExtractUserIdFilter))]
+    public class CardController : BaseController
     {
 
         private readonly ICardService _cardService;
@@ -29,8 +29,7 @@ namespace API.Controllers
         [HttpPost("CreateCard")]
         public async Task<IActionResult> CreateCard([FromBody] CreateCardRequest model)
         {
-            string userId = Helper.GetClaimValue(Request.Headers["Authorization"], TypeClaims.UserId);
-            var result = await _cardService.CreateCardAsync(model, Convert.ToInt32(userId));
+            var result = await _cardService.CreateCardAsync(model, UserId);
             
             ResponseDto response = new ResponseDto
             {

@@ -1,7 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace Infraestructure.Core.Helpers;
+namespace Domain.Helpers;
 
 public static class Helper
 {
@@ -10,9 +10,9 @@ public static class Helper
         JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
 
         string authHeader = token.Replace("Bearer ", "").Replace("bearer ", "");
-        JwtSecurityToken tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+        JwtSecurityToken tokens = handler.ReadToken(authHeader) as JwtSecurityToken;
 
-        Claim claimData = tokenS.Claims.FirstOrDefault(cl => cl.Type.ToUpper() == claim.ToUpper());
+        Claim claimData = tokens.Claims.FirstOrDefault(cl => cl.Type.ToUpper() == claim.ToUpper());
 
         if (claimData == null || string.IsNullOrEmpty(claimData.Value))
             throw new UnauthorizedAccessException();

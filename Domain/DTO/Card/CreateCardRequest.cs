@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Infraestructure.Core.DTO.Card;
+namespace Domain.DTO.Card;
 
 public class CreateCardRequest
 {

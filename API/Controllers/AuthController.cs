@@ -1,12 +1,10 @@
 using API.Handlers;
-using API.Handlers;
-using Domain.Services.Interfaces.Interfaces;
-using Infraestructure.Core.DTO;
-using Infraestructure.Core.DTO.Auth;
-using Microsoft.AspNetCore.Http;
+using Application.Services.Interfaces;
+using Domain.DTO;
+using Domain.DTO.Auth;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CargoPay.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

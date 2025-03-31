@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Infraestructure.Core.DTO.Payment;
+namespace Domain.DTO.Payment;
 
-public class PayRequest
+public class PaymentAsyncRequest
 {
     [Required]
     [RegularExpression(@"^\d{15}$", ErrorMessage = "It must be a 15-digit number")]

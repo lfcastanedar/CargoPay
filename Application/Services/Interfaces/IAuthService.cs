@@ -1,6 +1,6 @@
-﻿using Infraestructure.Core.DTO.Auth;
+﻿using Domain.DTO.Auth;
 
-namespace Domain.Services.Interfaces.Interfaces;
+namespace Application.Services.Interfaces;
 
 public interface IAuthService
 {

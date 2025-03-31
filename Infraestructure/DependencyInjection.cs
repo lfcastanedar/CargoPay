@@ -1,4 +1,6 @@
 ﻿using Infraestructure.Data;
+using Infraestructure.Repository;
+using Infraestructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,5 +20,7 @@ public static class DependencyInjection
         });
 
         #endregion
+
+        builder.Services.AddScoped<ICardRepository, CardRepository>();
     }
 }

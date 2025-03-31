@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Common.Resources {
+namespace Domain.Resources {
     using System;
     
     
@@ -21,14 +21,14 @@ namespace Common.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class GeneralMessage {
+    public class GeneralMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal GeneralMessage() {
+        internal GeneralMessages() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace Common.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common.Resources.GeneralMessage", typeof(GeneralMessage).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Domain.Resources.GeneralMessages", typeof(GeneralMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,11 +60,56 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An internal error has occurred, please try again..
+        ///   Looks up a localized string similar to The credit card already exists.
+        /// </summary>
+        public static string CreditCardExist {
+            get {
+                return ResourceManager.GetString("CreditCardExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User not authenticated successfully.
+        /// </summary>
+        public static string Error401 {
+            get {
+                return ResourceManager.GetString("Error401", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An internal error has occurred, please try again.
         /// </summary>
         public static string Error500 {
             get {
                 return ResourceManager.GetString("Error500", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The payment amount of {0} exceeds the available card balance of {1}.
+        /// </summary>
+        public static string PaymentAmountExcede {
+            get {
+                return ResourceManager.GetString("PaymentAmountExcede", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount to pay cannot be 0.
+        /// </summary>
+        public static string PaymentAmountLessThanZero {
+            get {
+                return ResourceManager.GetString("PaymentAmountLessThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment completed successfully. The amount paid was {0}, and the remaining card balance is {1}.
+        /// </summary>
+        public static string PaymentCompleted {
+            get {
+                return ResourceManager.GetString("PaymentCompleted", resourceCulture);
             }
         }
     }

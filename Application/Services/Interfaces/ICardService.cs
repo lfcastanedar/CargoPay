@@ -1,10 +1,10 @@
-﻿using Infraestructure.Core.DTO.Card;
+﻿using Domain.DTO.Card;
 
-namespace Domain.Services.Interfaces.Interfaces;
+namespace Application.Services.Interfaces;
 
 public interface ICardService
 {
     public Task<object> CreateCardAsync(CreateCardRequest model, int userId);
     
-    public Task<object> GetCardBalanceAsync(string cardNumber, int userId);
+    public Task<CardBalanceResponse?> GetCardBalanceAsync(string cardNumber, int userId);
 }

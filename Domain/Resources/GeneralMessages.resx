@@ -19,6 +19,21 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="Error500" xml:space="preserve">
-        <value>An internal error has occurred, please try again.</value>
+        <value>An internal error has occurred, please try again</value>
+    </data>
+    <data name="CreditCardExist" xml:space="preserve">
+        <value>The credit card already exists</value>
+    </data>
+    <data name="PaymentAmountLessThanZero" xml:space="preserve">
+        <value>The amount to pay cannot be 0</value>
+    </data>
+    <data name="PaymentAmountExcede" xml:space="preserve">
+        <value>The payment amount of {0} exceeds the available card balance of {1}</value>
+    </data>
+    <data name="PaymentCompleted" xml:space="preserve">
+        <value>Payment completed successfully. The amount paid was {0}, and the remaining card balance is {1}</value>
+    </data>
+    <data name="Error401" xml:space="preserve">
+        <value>User not authenticated successfully</value>
     </data>
 </root>

@@ -1,4 +1,4 @@
-﻿namespace Infraestructure.Core.DTO.Auth;
+﻿namespace Domain.DTO.Auth;
 
 public class TokenResponse
 {

@@ -1,9 +1,12 @@
-﻿using Common.Exceptions;
-using Common.Resources;
+﻿using Domain.DTO;
+using Domain.Exceptions;
+using Domain.Exceptions;
+using Domain.Resources;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Infraestructure.Core.DTO;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Serilog;
 
 namespace API.Handlers;
@@ -16,23 +19,37 @@ public class CustomExceptionHandler : ExceptionFilterAttribute
         ResponseDto response = new ResponseDto();
         
         
+        if (context.Exception is BusinessException)
+        {
+            responseException.Status = StatusCodes.Status400BadRequest;
+            response.Message = context.Exception.Message;
+            context.ExceptionHandled = true;
+            Log.Error(context.Exception, response.Message);
+        }
+        else if (context.Exception is UnauthorizedAccessException)
+        {
+            responseException.Status = StatusCodes.Status401Unauthorized;
+            response.Message = GeneralMessages.Error401;
+            context.ExceptionHandled = true;
+            Log.Error(GeneralMessages.Error401);
+        }
+        else 
+        {
+            responseException.Status = StatusCodes.Status500InternalServerError;
+            response.Result = JsonConvert.SerializeObject(context.Exception);
+            response.Message = GeneralMessages.Error500;
+            context.ExceptionHandled = true;
+            Log.Fatal(context.Exception, GeneralMessages.Error500);
+
+        }
+        
         context.Result = new ObjectResult(responseException.Value)
         {
             StatusCode = responseException.Status,
             Value = response
         };
         
-        if (context.Exception is UnauthorizedAccessException)
-        {
-            responseException.Status = StatusCodes.Status401Unauthorized;
-            response.Message = "3213";
-            context.ExceptionHandled = true;
-            Log.Error("dwq");
-        }
-        
-        
-        Log.Fatal(context.Exception, GeneralMessage.Error500);
         if (responseException.Status == StatusCodes.Status500InternalServerError)
-            context.HttpContext.Response.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = GeneralMessage.Error500;
+            context.HttpContext.Response.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = GeneralMessages.Error500;
     }
 }

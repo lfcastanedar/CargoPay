@@ -1,9 +1,9 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Domain.Services.Interfaces.Interfaces;
+using Application.Services.Interfaces;
+using Domain.DTO.Auth;
 using Infraestructure.Core.Constans;
-using Infraestructure.Core.DTO.Auth;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
