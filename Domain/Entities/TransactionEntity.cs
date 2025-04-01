@@ -16,10 +16,10 @@ public class TransactionEntity
     public decimal Amount { get; set; }
     
     [Column(TypeName = "decimal(18, 7)")]
-    public decimal FeeRate { get; set; }
+    public decimal UFE { get; set; }
     
     [Column(TypeName = "decimal(18, 7)")]
-    public decimal Fee { get; set; }
+    public decimal PaymentFee { get; set; }
     
     [Column(TypeName = "decimal(18, 7)")]
     public decimal Total { get; set; }

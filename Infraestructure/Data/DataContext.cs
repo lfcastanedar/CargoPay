@@ -9,6 +9,7 @@ public class DataContext : DbContext
 
     }
     
+    public DbSet<UserEntity> UserEntity { get; set; }
     public DbSet<CardEntity> CardEntity { get; set; }
     public DbSet<TransactionEntity> TransactionEntity { get; set; }
 

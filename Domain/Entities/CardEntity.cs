@@ -10,6 +10,7 @@ public class CardEntity: BaseAuditableEntity
     [Key]
     public int Id { get; set; }
     
+    [StringLength(16)]
     public string CardNumber { get; set; }
     
     public decimal Balance { get; set; }

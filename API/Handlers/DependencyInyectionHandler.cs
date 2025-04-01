@@ -1,6 +1,4 @@
-﻿using Domain.Services.Interfaces;
-
-namespace API.Handlers;
+﻿namespace API.Handlers;
 
 /*public static class DependencyInyectionHandler
 {

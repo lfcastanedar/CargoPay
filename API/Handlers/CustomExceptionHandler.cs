@@ -1,9 +1,7 @@
 ﻿using Domain.DTO;
 using Domain.Exceptions;
-using Domain.Exceptions;
 using Domain.Resources;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Infraestructure.Core.DTO;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

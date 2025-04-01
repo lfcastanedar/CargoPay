@@ -18,8 +18,11 @@ namespace API.Controllers
             _authService = authService;
         }
 
-
+        /// <summary>
+        /// Handles login functionality for the authentication system.
+        /// </summary>
         [HttpPost("login")]
+        [ProducesResponseType(typeof(ResponseDto), 200)]
         public async Task<IActionResult> Post([FromBody] AuthRequest request)
         {
             var result = await _authService.Login(request);

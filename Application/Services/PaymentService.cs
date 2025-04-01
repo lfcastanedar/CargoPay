@@ -4,7 +4,6 @@ using Domain.DTO;
 using Domain.DTO.Payment;
 using Domain.Entities;
 using Domain.Resources;
-using Infraestructure.Core.DTO;
 using Infraestructure.Repository.Interfaces;
 
 namespace Application.Services;
@@ -14,27 +13,22 @@ public class PaymentService : IPaymentService
     private readonly IUFEService _UFEService;
     private readonly ICardRepository _cardRepository;
     
-    private readonly ConcurrentQueue<Func<Task>> _queue = new(); // Cola de tareas concurrente
-    private readonly SemaphoreSlim _semaphore = new(1); // Control de acceso de una sola tarea a la vez
-
-    
     public PaymentService(IUFEService UFEService, ICardRepository cardRepository)
     {
         _UFEService = UFEService;
         _cardRepository = cardRepository;
     }
 
-    public async Task<ResponseDto> PaymentAsync(PaymentAsyncRequest model, int UserId)
+    public async Task<ResponseDto> PaymentAsync(PaymentAsyncRequest model, int userId)
     {
-        var card = await _cardRepository.GetByNumberCard(model.CardNumber, UserId);
-
-        var rate = await _UFEService.GetUFE();
-        var amountToPay = model.Amount + (rate * model.Amount);
-
         if (model.Amount == 0)
         {
             return new ResponseDto{ IsSuccess = false, Message = GeneralMessages.PaymentAmountLessThanZero };
         }
+        
+        var card = await _cardRepository.GetByNumberCard(model.CardNumber, userId);
+        var UFEFee = await _UFEService.GetUFE();
+        var amountToPay = model.Amount + UFEFee;
 
         if (card.Balance < amountToPay)
         {
@@ -46,8 +40,8 @@ public class PaymentService : IPaymentService
             Balance = card.Balance,
             Amount = model.Amount,
             CreatedAt = DateTime.Now,
-            FeeRate = rate,
-            Fee = amountToPay,
+            UFE = UFEFee,
+            PaymentFee = amountToPay,
             Total = card.Balance - amountToPay
         });
         

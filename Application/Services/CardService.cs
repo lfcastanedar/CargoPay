@@ -16,7 +16,7 @@ public class CardService: ICardService
         _cardRepository = cardRepository;
     }
 
-    public async Task<object> CreateCardAsync(CreateCardRequest model, int userId)
+    public async Task<CardResponse> CreateCardAsync(CreateCardRequest model, int userId)
     {
         var isCardExist = await _cardRepository.GetByNumberCard(model.CardNumber);
 
@@ -34,7 +34,11 @@ public class CardService: ICardService
         
         await _cardRepository.Save();
 
-        return card;
+        return new CardResponse
+        {
+            CardNumber = card.CardNumber,
+            Balance = card.Balance
+        };
     }
 
     public async Task<CardBalanceResponse?> GetCardBalanceAsync(string cardNumber, int userId)
@@ -45,7 +49,7 @@ public class CardService: ICardService
 
         return new CardBalanceResponse
         {
-            Balance = userCard.Balance.ToString() ?? "0",
+            Balance = userCard.Balance,
             CardNumber = userCard.CardNumber,
         };
     }

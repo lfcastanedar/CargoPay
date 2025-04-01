@@ -36,4 +36,13 @@
     <data name="Error401" xml:space="preserve">
         <value>User not authenticated successfully</value>
     </data>
+    <data name="BadCredentials" xml:space="preserve">
+        <value>Incorrect Credentials</value>
+    </data>
+    <data name="UserBlocked" xml:space="preserve">
+        <value>The account has been locked for 5 minutes</value>
+    </data>
+    <data name="CreditCardNoExist" xml:space="preserve">
+        <value>The credit card does not exist</value>
+    </data>
 </root>

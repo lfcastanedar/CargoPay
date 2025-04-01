@@ -35,7 +35,8 @@ namespace Infraestructure.Data.Migrations
 
                     b.Property<string>("CardNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
 
                     b.Property<DateTimeOffset>("Created")
                         .HasColumnType("datetimeoffset");
@@ -79,13 +80,13 @@ namespace Infraestructure.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Fee")
-                        .HasColumnType("decimal(18, 7)");
-
-                    b.Property<decimal>("FeeRate")
+                    b.Property<decimal>("PaymentFee")
                         .HasColumnType("decimal(18, 7)");
 
                     b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18, 7)");
+
+                    b.Property<decimal>("UFE")
                         .HasColumnType("decimal(18, 7)");
 
                     b.HasKey("Id");
@@ -105,11 +106,19 @@ namespace Infraestructure.Data.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime>("LastLoginAttemptDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LoginAttempts")
+                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
 

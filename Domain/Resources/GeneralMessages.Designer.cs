@@ -60,11 +60,29 @@ namespace Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect Credentials.
+        /// </summary>
+        public static string BadCredentials {
+            get {
+                return ResourceManager.GetString("BadCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The credit card already exists.
         /// </summary>
         public static string CreditCardExist {
             get {
                 return ResourceManager.GetString("CreditCardExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The credit card does not exist.
+        /// </summary>
+        public static string CreditCardNoExist {
+            get {
+                return ResourceManager.GetString("CreditCardNoExist", resourceCulture);
             }
         }
         
@@ -110,6 +128,15 @@ namespace Domain.Resources {
         public static string PaymentCompleted {
             get {
                 return ResourceManager.GetString("PaymentCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The account has been locked for 5 minutes.
+        /// </summary>
+        public static string UserBlocked {
+            get {
+                return ResourceManager.GetString("UserBlocked", resourceCulture);
             }
         }
     }

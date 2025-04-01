@@ -22,5 +22,9 @@ public static class DependencyInjection
         #endregion
 
         builder.Services.AddScoped<ICardRepository, CardRepository>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<SeedDb>();
+        
+       
     }
 }
